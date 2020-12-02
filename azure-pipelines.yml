@@ -6,15 +6,20 @@
 trigger:
 - main
 
+# Type of build agent to use to build project - other options include 'macOS-10.15', 'vs2017-win2016', ...
+# These are Microsoft-hosted build agents.
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+# Specify the Node.js and NPM version to use for build
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
+# Build commands
 - script: |
     npm install
     npm run build
